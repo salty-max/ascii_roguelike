@@ -1,8 +1,8 @@
 #include "Game.h"
 
 int main() {
-    Game game("levels/level1.txt");
+    Game game("/Users/max/Developer/cpp/ascii_roguelike/cmake-build-debug/level1.txt");
+	game.initWindow();
     game.play();
-    getchar();
     return 0;
 }
