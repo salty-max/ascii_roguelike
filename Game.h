@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include "Enemy.h"
 #include "Level.h"
 #include "Player.h"
 #include <ncurses.h>
@@ -11,12 +12,13 @@
 
 class Game {
 public:
-    Game(const char *levelFileName);
-    void initWindow();
-    void play();
-    void movePlayer();
+  Game(const char *levelFileName);
+  void initWindow();
+  void play();
+  void movePlayer();
+
 private:
-    Player _player;
-    Level _level;
-	WINDOW *_win;
+  WINDOW *_win;
+  Player _player;
+  Level _level;
 };

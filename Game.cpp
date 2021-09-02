@@ -6,39 +6,42 @@
 #include <ncurses.h>
 
 Game::Game(const char *levelFileName) {
-    _player.init(1, 100, 10, 10, 0);
-	_level.init(_win);
-    _level.load(levelFileName, _player);
+  _player.init(_win, 1, 100, 10, 10, 0);
+  _level.init(_win);
+  _level.load(levelFileName, _player);
 }
 
 void Game::initWindow() {
-	// Init ncurses
-	initscr();
-	noecho();
-	cbreak();
+  // Init ncurses
+  initscr();
+  noecho();
+  cbreak();
 
-	// Get screen size
-	int xMax, yMax;
-	getmaxyx(stdscr, yMax, xMax);
+  // Get screen size
+  int xMax, yMax;
+  getmaxyx(stdscr, yMax, xMax);
 
-	// Create window
-	_win = newwin(20, 50, 0, 0);
-	refresh();
-	wrefresh(_win);
+  keypad(_win, true);
+
+  // Create window
+  _win = newwin(20, 50, 0, 0);
+  box(_win, 1, 1);
+  refresh();
+  wrefresh(_win);
 }
 
 void Game::play() {
-    bool playing = true;
+  bool playing = true;
 
-	while (playing) {
-		_level.print();
-		movePlayer();
-	}
+  while (playing) {
+    _level.print();
+    movePlayer();
+  }
 }
 
 void Game::movePlayer() {
-    char ch;
-    ch = getch();
-	_level.tryMovePlayer(ch, _player);
-	refresh();
+  char ch;
+  ch = getch();
+  _level.tryMovePlayer(ch, _player);
+  refresh();
 }
