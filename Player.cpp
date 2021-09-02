@@ -36,7 +36,7 @@ void Player::addXP(int value) {
     _defense += 5;
     _health += 10;
     _expToNextLevel += _expToNextLevel * 2;
-    printw("You are now level %d", _level);
+    printw("You are now level %d\nAttack: %d  Defense: %d  Health: %d\n", _level, _attack, _defense, _health);
     getch();
   }
 }

@@ -121,9 +121,9 @@ void Level::battleEnemy(Player &player, int targetx, int targety) {
       getch();
 
       if (attackResult > 0) {
-        player.addXP(attackResult);
         setTile(targetx, targety, '.');
-        printw("%s died!", enemyName.c_str());
+        printw("%s died!\n", enemyName.c_str());
+        player.addXP(attackResult);
         getch();
 
         return;
@@ -137,7 +137,7 @@ void Level::battleEnemy(Player &player, int targetx, int targety) {
 
       if (attackResult > 0) {
         setTile(px, py, 'X');
-        printw("You died!");
+        printw("You died!\n");
         endwin();
         exit(1);
       }
